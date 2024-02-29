@@ -1,0 +1,22 @@
+Project -1
+
+1. created s3 bucket "project1-myglue-etl" 
+		input_data - uploading csv files with different pratition dates
+		ouput_data - saving filter data here
+		scripts - saving glue scripts
+		tmp - saving intermediate data
+2. Created glue crawler to scrawl data from s3 bucket and creating table in datacatalog named as "product"
+3. Creating Glue job named as "my-glue-job-read-froms3"
+	Description of job - 
+	-> Filtration of Data - Data Quality check
+	-> Performing transformation - finding out partition wise total quantitiy saled out with total count
+	-> Saving data in the form of parquote in s3
+4. Created Redshift Cluster and a table called "product_tab_def" inside public schema(default) 
+5. Then build connection with redshift cluster in connection section inside Glue
+6. Created table in Redshift named as "product_tab_def"
+7.Then created Glue crawler to crawl Redshift table schema.
+8. Creating glue job named as "my-glue-job-read-from-redshift"
+	Description of job - 
+	-> Fetching data from s3 bucket output folder
+	-> Pushing Data to Redshift tables for quering
+9. Created work flow orchestration
